@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<!--<layout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/layout_generic.xsd">-->
+    <!--<referenceBlock name="adminhtml\product\edit\tab\alerts\stock_0">-->
+        <!--<block class="Magento\ProductAlert\Block\Adminhtml\Catalog\Product\Edit\Tab\Alerts\StockColumn"-->
+               <!--name="admin.product.edit.tab.alerts.stock.column.stock" />-->
+    <!--</referenceBlock>-->
+<!--</layout>-->
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="adminhtml\product\edit\tab\alerts\stock_0">
+            <block class="Magento\ProductAlert\Block\Adminhtml\Catalog\Product\Edit\Tab\Alerts\StockColumn"
+                   name="admin.product.edit.tab.alerts.stock.column.stock"/>
+        </referenceBlock>
+    </body>
+</page>
+
+        <!--adminhtml\product\edit\tab\alerts\stock_0-->
+<!--<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">-->
+    <!--<body>-->
+        <!--<referenceBlock name="admin.product.edit.tab.alerts.stock">-->
+            <!--<block class="Magento\ProductAlert\Block\Adminhtml\Catalog\Product\Edit\Tab\Alerts\StockColumn"-->
+                   <!--name="admin.product.edit.tab.alerts.stock.column.stock" />-->
+        <!--</referenceBlock>-->
+    <!--</body>-->
+<!--</page>-->
