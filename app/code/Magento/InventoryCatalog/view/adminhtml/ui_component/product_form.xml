@@ -6,7 +6,7 @@
  */
 -->
 <form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
-    <fieldset name="sources" sortOrder="5" component="Magento_InventoryCatalog/js/product/form/components/source-items">
+    <fieldset name="sources" sortOrder="5" >
         <settings>
             <label translate="true">Sources</label>
             <collapsible>true</collapsible>
@@ -20,6 +20,9 @@
                     <item name="label" xsi:type="string"/>
                     <item name="dataScope" xsi:type="string"/>
                     <item name="breakLine" xsi:type="boolean">false</item>
+                    <item name="imports" xsi:type="array">
+                        <item name="disabled" xsi:type="string">${ $.provider }:data.product.stock_data.manage_stock</item>
+                    </item>
                 </item>
             </argument>
             <container name="assign_sources_button" component="Magento_Ui/js/form/components/button" template="ui/form/components/button/container">
@@ -36,6 +39,9 @@
                         <item name="additionalForGroup" xsi:type="boolean">true</item>
                         <item name="additionalClasses" xsi:type="string">admin__field-medium</item>
                         <item name="dataScope" xsi:type="string"/>
+                        <item name="imports" xsi:type="array">
+                            <item name="disabled" xsi:type="string">${ $.provider }:data.product.stock_data.manage_stock</item>
+                        </item>
                     </item>
                 </argument>
             </container>
@@ -61,6 +67,7 @@
                 <identificationProperty>source_code</identificationProperty>
                 <links>
                     <link name="insertData">${ $.provider }:${ $.dataProvider }</link>
+                    <link name="disabled">!${ $.provider }:data.product.stock_data.manage_stock</link>
                 </links>
                 <dndConfig>
                     <param name="enabled" xsi:type="boolean">false</param>
@@ -115,6 +122,9 @@
                 <field name="actionDelete" formElement="actionDelete" sortOrder="50">
                     <settings>
                         <label translate="true">Unassign</label>
+                        <imports>
+                            <link name="disabled">!${ $.provider }:data.product.stock_data.manage_stock</link>
+                        </imports>
                     </settings>
                 </field>
             </container>
