@@ -20,9 +20,6 @@
                     <item name="label" xsi:type="string"/>
                     <item name="dataScope" xsi:type="string"/>
                     <item name="breakLine" xsi:type="boolean">false</item>
-                    <item name="imports" xsi:type="array">
-                        <item name="disabled" xsi:type="string">${ $.provider }:data.product.stock_data.manage_stock</item>
-                    </item>
                 </item>
             </argument>
             <container name="assign_sources_button" component="Magento_Ui/js/form/components/button" template="ui/form/components/button/container">
@@ -40,7 +37,7 @@
                         <item name="additionalClasses" xsi:type="string">admin__field-medium</item>
                         <item name="dataScope" xsi:type="string"/>
                         <item name="imports" xsi:type="array">
-                            <item name="disabled" xsi:type="string">${ $.provider }:data.product.stock_data.manage_stock</item>
+                            <item name="disabled" xsi:type="string">!${ $.provider }:data.product.stock_data.manage_stock</item>
                         </item>
                     </item>
                 </argument>
@@ -55,6 +52,9 @@
                         <item name="name" xsi:type="string">name</item>
                         <item name="qty" xsi:type="string">qty</item>
                     </item>
+                    <!--<item name="imports" xsi:type="array">
+                        <item name="disabled" xsi:type="string">!${ $.provider }:data.product.stock_data.manage_stock</item>
+                    </item>-->
                     <item name="identificationDRProperty" xsi:type="string">source_code</item>
                 </item>
             </argument>
@@ -67,19 +67,30 @@
                 <identificationProperty>source_code</identificationProperty>
                 <links>
                     <link name="insertData">${ $.provider }:${ $.dataProvider }</link>
-                    <link name="disabled">!${ $.provider }:data.product.stock_data.manage_stock</link>
+                    <!--<link name="disabled">!${ $.provider }:data.product.stock_data.manage_stock</link>-->
                 </links>
+                <!--<imports>
+                    <link name="disabled">!${ $.provider }:data.product.stock_data.manage_stock</link>
+                </imports>-->
                 <dndConfig>
                     <param name="enabled" xsi:type="boolean">false</param>
                 </dndConfig>
                 <columnsHeader>true</columnsHeader>
             </settings>
             <container name="record" component="Magento_Ui/js/dynamic-rows/record">
+                <!--<settings>
+                    <imports>
+                        <link name="disabled">!${ $.provider }:data.product.stock_data.manage_stock</link>
+                    </imports>
+                </settings>-->
                 <argument name="data" xsi:type="array">
                     <item name="config" xsi:type="array">
                         <item name="isTemplate" xsi:type="boolean">true</item>
                         <item name="is_collection" xsi:type="boolean">true</item>
                         <item name="dataScope" xsi:type="string"/>
+                        <item name="imports" xsi:type="array">
+                            <item name="disabled" xsi:type="string">!${ $.provider }:data.product.stock_data.manage_stock</item>
+                        </item>
                     </item>
                 </argument>
                 <field name="source_code" formElement="input" sortOrder="10">
@@ -88,6 +99,9 @@
                         <dataType>text</dataType>
                         <dataScope>source_code</dataScope>
                         <label translate="true">ID</label>
+                        <!--<imports>
+                            <link name="disabled">!${ $.provider }:data.product.stock_data.manage_stock</link>
+                        </imports>-->
                     </settings>
                 </field>
                 <field name="name" formElement="input" sortOrder="20">
@@ -96,6 +110,9 @@
                         <dataType>text</dataType>
                         <dataScope>name</dataScope>
                         <label translate="true">Name</label>
+                        <!--<imports>
+                            <link name="disabled">!${ $.provider }:data.product.stock_data.manage_stock</link>
+                        </imports>-->
                     </settings>
                 </field>
                 <field name="status" formElement="select" sortOrder="30">
@@ -103,6 +120,9 @@
                         <dataType>text</dataType>
                         <dataScope>status</dataScope>
                         <label translate="true">Status</label>
+                        <!--<imports>
+                            <link name="disabled">!${ $.provider }:data.product.stock_data.manage_stock</link>
+                        </imports>-->
                     </settings>
                     <formElements>
                         <select>
@@ -117,14 +137,17 @@
                         <dataType>text</dataType>
                         <dataScope>quantity</dataScope>
                         <label translate="true">Qty</label>
+                        <!--<imports>
+                            <link name="disabled">!${ $.provider }:data.product.stock_data.manage_stock</link>
+                        </imports>-->
                     </settings>
                 </field>
                 <field name="actionDelete" formElement="actionDelete" sortOrder="50">
                     <settings>
                         <label translate="true">Unassign</label>
-                        <imports>
+                        <!--<imports>
                             <link name="disabled">!${ $.provider }:data.product.stock_data.manage_stock</link>
-                        </imports>
+                        </imports>-->
                     </settings>
                 </field>
             </container>
