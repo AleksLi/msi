@@ -13,6 +13,7 @@ use Magento\InventorySalesApi\Api\Data\SalesChannelInterface;
 use Magento\Store\Api\Data\WebsiteInterface;
 use Magento\InventorySalesApi\Api\StockResolverInterface;
 use Magento\InventoryApi\Api\StockRepositoryInterface;
+use Magento\InventorySales\Model\ResourceModel\StockIdResolver;
 
 /**
  * Adapt Stock resolver to admin website
@@ -30,15 +31,18 @@ class AdaptStockResolverToAdminWebsitePlugin
     private $defaultStockProviderInterface;
 
     /**
-     * @param DefaultStockProviderInterface $defaultStockProviderInterface
-     * @param StockRepositoryInterface $stockRepositoryInterface
+     * @var StockIdResolver
      */
+    private $stockIdResolver;
+
     public function __construct(
         DefaultStockProviderInterface $defaultStockProviderInterface,
-        StockRepositoryInterface $stockRepositoryInterface
+        StockRepositoryInterface $stockRepositoryInterface,
+        StockIdResolver $stockIdResolver
     ) {
         $this->defaultStockProviderInterface = $defaultStockProviderInterface;
         $this->stockRepository = $stockRepositoryInterface;
+        $this->stockIdResolver = $stockIdResolver;
     }
 
     /**
@@ -56,6 +60,10 @@ class AdaptStockResolverToAdminWebsitePlugin
         string $code
     ) {
         if (SalesChannelInterface::TYPE_WEBSITE === $type && WebsiteInterface::ADMIN_CODE === $code) {
+            return $this->stockRepository->get($this->defaultStockProviderInterface->getId());
+        }
+        $stockId = $this->stockIdResolver->resolve(SalesChannelInterface::TYPE_WEBSITE, $code);
+        if (null === $stockId) {
             return $this->stockRepository->get($this->defaultStockProviderInterface->getId());
         }
         return $proceed($type, $code);
