@@ -7,6 +7,9 @@ namespace Magento\Shipping\Model\Config\Source;
 
 use Magento\Framework\App\RequestInterface;
 
+/**
+ * Class Allmethods
+ */
 class Allmethods implements \Magento\Framework\Option\ArrayInterface
 {
     /**
@@ -44,6 +47,7 @@ class Allmethods implements \Magento\Framework\Option\ArrayInterface
 
     /**
      * Return array of carriers.
+     *
      * If $isActiveOnlyFlag is set to true, will return only active carriers
      *
      * @param bool $isActiveOnlyFlag
@@ -83,6 +87,7 @@ class Allmethods implements \Magento\Framework\Option\ArrayInterface
 
     /**
      * Get Current Admin website ID to Display only available methods for website.
+     *
      * Shipping methods cannot have activate option on StoreView level.
      *
      * @return int
